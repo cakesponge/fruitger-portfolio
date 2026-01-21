@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",  //parent repository
+        "paths": {
+            "#*":["src/*"]
+        }
+    },
+    
+    "include": ["src"]
+}
