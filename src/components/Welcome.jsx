@@ -56,10 +56,8 @@ const setupTextHover = (container, type) => {
         container.removeEventListener("mousemove", handleMouseMove);
         container.removeEventListener("mouseleave", handleMouseLeave);
     }
-    
-}
+};
 
-    
 const Welcome = () => {
     const titleRef = useRef(null);
     const subtitleRef = useRef(null);
