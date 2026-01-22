@@ -7,8 +7,8 @@ const WindowControls = ({target}) => {
         <div id = "window-controls">
 
             <div className = "close" onClick = {() => closeWindow(target)} />
-            <div classname = "minimize" />
-            <div classname = "maximize" />
+            <div className = "minimize" />
+            <div className = "maximize" />
 
         </div>
     )
