@@ -1,12 +1,14 @@
-import { DockIcon } from "lucide-react";
 import { useRef } from "react";
 import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import {dockApps} from "#constants/index.js"
 import { Tooltip } from "react-tooltip";
+
+import { dockApps } from "#constants/index.js"
+import { useGSAP } from "@gsap/react";
+import useWindowStore from "#store/window.js";
 
 const Dock = () => {
 
+    const { openWindow, closeWindow, windows} = useWindowStore();
     const dockRef = useRef(null);
 
     useGSAP(() => {
@@ -60,7 +62,27 @@ const Dock = () => {
 
     
     const toggleApp = (app) => {
-        //TODO: open window logic
+       
+        if(!app.canOpen) return;
+
+        const window = windows[app.id];
+
+        if(!window){
+            console.error(`No window configuration found for app id: ${app.id}`);
+            return;
+        }
+        
+        if(window.isOpen) {
+
+            closeWindow(app.id);
+
+        }else{
+
+            openWindow(app.id);
+
+        }
+
+        console.log(windows);
     }
 
     return (
