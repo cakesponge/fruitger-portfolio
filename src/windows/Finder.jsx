@@ -3,13 +3,21 @@ import WindowWrapper from "#hoc/WindowWrapper.jsx"
 import { Search } from "lucide-react"
 import { locations } from "#constants/index.js"
 import useLocationStore from "#store/location.js";
+import useWindowStore from '#store/window.js'
 import { clsx } from "clsx";
 
 const Finder = () => {
 
+    const { openWindow } = useWindowStore();
     const {activeLocation, setActiveLocation } = useLocationStore()
 
-    const openItem= (item) => {}
+    const openItem= (item) => {
+        if(item.fileType === 'pdf') return openWindow("resume")
+        if(item.kind === 'folder') return setActiveLocation(item)
+        if(['fig', 'url'].includes(item.fileType) && item.href) //edit in index.js CHANGE everything
+            return window.open(item.href, 'blank');
+        openWindow(`${item.fileType}${item.kind}`, item)
+    }
 
     const renderList = (name, items) => (
 
@@ -62,7 +70,7 @@ const Finder = () => {
             
             ))}
         </ul>
-        
+
         </div>
 
         
