@@ -10,6 +10,7 @@ import Dock from '#components/Doc.jsx';
 import Terminal from '#windows/terminal.jsx';
 import Safari from '#windows/Safari.jsx';
 import Resume from '#windows/resume.jsx';
+import Finder from '#windows/Finder.jsx';
 
 gsap.registerPlugin(Draggable);
 
@@ -23,6 +24,7 @@ const App = () => {
       <Terminal />
       <Safari />
       <Resume />
+      <Finder />
     </main>
   );
 };
